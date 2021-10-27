@@ -1,3 +1,10 @@
 from django.urls import path
 
-from . import views
+from  fondos.views import *
+app_name = 'fondos'
+urlpatterns = [
+
+    path('',index,name='index'),
+
+
+]

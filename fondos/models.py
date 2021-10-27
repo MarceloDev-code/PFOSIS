@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+import calendar
+
 
 # Create your models here.
 
@@ -52,6 +54,8 @@ class publicaciones(models.Model):
             self.autor,
             self.fecha_termino
         )
+
+
 
 class estado(models.Model):
     nombre = models.CharField(max_length=100)
