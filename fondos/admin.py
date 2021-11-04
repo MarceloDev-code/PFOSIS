@@ -25,9 +25,3 @@ class rol(admin.ModelAdmin):
         'id',
     )
 
-
-@admin.register(models.dimensiones)
-class rol(admin.ModelAdmin):
-    list_display = (
-        'id',
-    )
