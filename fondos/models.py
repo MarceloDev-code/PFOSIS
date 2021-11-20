@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils import timezone, dateformat
 import calendar
 
 
 # Create your models here.
 
-usuario = get_user_model()
+
 
 class usuario(models.Model):
     rut = models.CharField(max_length=20,unique=True,null=False,verbose_name="Documento Chileno de identificación")
@@ -18,6 +19,7 @@ class usuario(models.Model):
 
     USERNAME_FIELD = 'rut'
     REQUIRED_FIELDS = ['rut','rol']
+
 
     def nombre_completo(self):
         nombre_comm = self.nombres+" "+self.apellidos
@@ -41,11 +43,13 @@ class dimensiones(models.Model):
 class publicaciones(models.Model):
     nombre_fondo = models.CharField(max_length=200,null=False,verbose_name="Nombre del Fondo")
     dimension = models.ForeignKey('dimensiones',verbose_name="Dimensión",on_delete=models.PROTECT)
-    autor = models.ForeignKey('usuario',verbose_name="Autor",on_delete=models.PROTECT)
+    autor = models.ForeignKey('auth.User',verbose_name="Autor",on_delete=models.PROTECT)
     objetivo = models.CharField(max_length=300,null=True,verbose_name="Objetivo")
     enlace = models.CharField(max_length=200,verbose_name="Link")
     fecha_inicio = models.DateTimeField(verbose_name="Fecha inicio")
     fecha_termino = models.DateTimeField(verbose_name="Fecha termino")
+    activo = models.BooleanField(default=True)
+
 
     def __str__(self):
        return "{} - {} - {} - {}".format(
@@ -54,6 +58,13 @@ class publicaciones(models.Model):
             self.autor,
             self.fecha_termino
         )
+    def cambio_de_estado(self):
+        state = self.activo
+        if self.fecha_termino:
+            state = False
+        return state
+
+
 
 
 
@@ -61,7 +72,7 @@ class estado(models.Model):
     nombre = models.CharField(max_length=100)
 
     def __str__(self):
-        "{}".format(
+        return "{}".format(
             self.nombre
         )
 class adjudicarse_fondo(models.Model):
@@ -77,4 +88,4 @@ class rol(models.Model):
        return "{}".format(
             self.tipo
         )
-
+usuario = get_user_model()

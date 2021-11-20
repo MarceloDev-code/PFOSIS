@@ -7,7 +7,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 @admin.register(models.publicaciones)
-class publicaciones(admin.ModelAdmin):
+class publicaciones_admin(admin.ModelAdmin):
     list_display = (
         'id',
     )
@@ -20,8 +20,21 @@ class publicaciones(admin.ModelAdmin):
     ]
 
 @admin.register(models.rol)
-class rol(admin.ModelAdmin):
+class rol_admin(admin.ModelAdmin):
     list_display = (
         'id',
+        'tipo',
     )
 
+@admin.register(models.estado)
+class estado_admin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'nombre',
+    )
+@admin.register(models.dimensiones)
+class dimensiones_admin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'nombre',
+    )

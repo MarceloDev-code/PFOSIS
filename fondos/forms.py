@@ -13,7 +13,7 @@ class publicacionForm(forms.ModelForm):
             'dimension',
             'autor',
             'objetivo',
-            'enalce',
+            'enlace',
             'fecha_inicio',
             'fecha_termino',
 

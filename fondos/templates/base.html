@@ -1,0 +1,70 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <i href="/assets/favicon.ico" /></i>
+                    <h1 class="fw-bolder">Queltehue Tu canal social!</h1>
+                    <p class="lead mb-0">Bienvenido a la pagina de información para fondos solidarios</p>
+                </div>
+            </div>
+        </header>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+
+    <title> {% block titulo_pagina %}{% endblock %} </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'directorio/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'directorio/css/fontawesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'directorio/css/alertify.min.css' %}" rel="stylesheet">
+    <link href="{% static 'directorio/css/themes/bootstrap.rtl.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+     <link href="{% static '/CSS/styles.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+
+{% include 'partials/navbar.html' %}
+
+<!-- Begin page content -->
+<div class="container">
+    {% block contenido %}
+    {% endblock %}
+    <br>
+</div>
+
+{% include 'partials/footer.html' %}
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'directorio/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'directorio/js/popper.min.js' %}"></script>
+<script src="{% static 'directorio/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'directorio/js/alertify.min.js' %}"></script>
+
+{% block extra_js %}
+{% endblock %}
+
+<script>
+    $( document ).ready(function() {
+        {% if messages %}
+            {% for m in messages %}
+                alertify.notify(
+                    '{{ m.message|safe }}', '{{ m.tags }}', 7
+                );
+            {% endfor %}
+        {% endif %}
+    });
+</script>
+</body>
+</html>

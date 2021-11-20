@@ -1,8 +1,56 @@
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />>
-  </head>
-  <body>
+{% extends 'base.html' %}
 
-  </body>
-</html>
+
+
+   {% block xd %}
+       <div class="card border-secondary ">
+        <div class="card-header"> <h3> Brigidoooooo <small> </small></h3></div>
+          <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>desc</th>
+                <th>asdasd</th>
+
+
+            </tr>
+            </thead>
+              <tbody>
+            {% for i in lista %}
+                <tr>
+
+
+                    <td>{{ i.nombre_fondo}}</td>
+                    <td>{{ i.enlace}}</td>
+                    <td>{{ i.fecha_inicio}}</td>
+                    <td>{{ i.fecha_termino}}</td>
+
+
+
+                </tr>
+
+            {% endfor %}
+
+
+            </tbody>
+
+
+
+
+
+
+        </table>
+
+
+          </div>
+
+
+    </div>
+    <br>
+
+     <br>
+
+
+  {% endblock %}

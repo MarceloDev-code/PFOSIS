@@ -1,0 +1,44 @@
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <a class="navbar-brand" href="{% url 'fondos:index' %}"> <i class="fa fa-american-sign-language-interpreting"></i> QUELTEHUE TU CANAL SOCIAL <span class="sr-only">(current)</span></a></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item {% if request.resolver_match.view_name == 'fondos:index' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'fondos:index' %}">
+                    <i class="fa fa-users"></i>  Fondos</a>
+            </li>
+
+
+
+        </ul>
+        <ul class="navbar-nav pull-right mr-lg-5">
+            {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user"></i> {{ request.user }}
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/admin/">
+                            <i class="fa fa-gear"></i>
+                            Administración
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'fondos:index' %}">
+                            <i class="fa fa-user"></i>
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</nav>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<div class = "card">
+<H1 >Encuentra los fondos solidarios mas urgentes aquí</H1>
+      <div class="card border-secondary ">
+        <div class="card-header"> <h3> Listado de fondos <small> </small></h3></div>
+          <div class="card-body">
+          <table class="table">
+            <thead>
+            <tr>
+                <th>Nombre del fondo</th>
+                <th>Dimensión</th>
+                <th>enlace</th>
+                <th>Fecha de inicio</th>
+                <th>fecha de cierre</th>
+
+
+            </tr>
+            </thead>
+              <tbody>
+            {% for i in publicaciones %}
+                <tr>
+
+
+                    <td>{{ i.nombre_fondo}}</td>
+                    <td>{{ i.dimension}}</td>
+                    <td>
+                    <A href="http://{{ i.enlace }}">{{ i.enlace}}</A>
+                    </td>
+                    <td>{{ i.fecha_inicio}}</td>
+                    <td>{{ i.fecha_termino}}</td>
+
+
+
+                </tr>
+
+            {% endfor %}
+
+
+            </tbody>
+          </table>
+</div>
+      </div>
+</div>
+
+{% endblock %}
