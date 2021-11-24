@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils import timezone, dateformat
-import calendar
+import calendar,cmath
 
 
 # Create your models here.
@@ -60,11 +60,19 @@ class publicaciones(models.Model):
         )
     def cambio_de_estado(self):
         state = self.activo
-        if self.fecha_termino:
+        if timezone.now() > self.fecha_termino:
             state = False
         return state
-
-
+    def dias_que_faltan(self):
+        dias =self.fecha_termino - timezone.now()
+        if self.fecha_termino < timezone.now():
+            dias = "Ya expiro el fondo"
+        return dias
+    def porcentajes(self):
+        p = round(((  timezone.now() - self.fecha_inicio) / (self.fecha_termino - self.fecha_inicio))*100 )
+        if p > 100:
+            p = 100
+        return p
 
 
 

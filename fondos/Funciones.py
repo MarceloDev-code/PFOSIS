@@ -1,1 +1,3 @@
+from fondos.models import *
+
 
