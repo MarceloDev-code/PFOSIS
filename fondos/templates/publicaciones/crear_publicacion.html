@@ -1,12 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Publicacion Formulario</title>
-</head>
-<body>
-{% csrf_token %}
-{% form %}
-{% csrf_token %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<header>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</header>
+
+{% block contenido %}
+
+<div class="card ">
+  <div class="card-body ">
+    <form method="post">
+      {% csrf_token %}
+      {{ form | crispy }}
+      <button type="submit" class="btn btn-primary ">Guardar</button>
+    </form>
+  </div>
+</div>
+
+{% endblock  %}
+
+
+{% block footer_scripts %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+<script src="{% static 'js/materia-datetime-picker.js' %}" charset="utf-8"></script>
+
+
+{% endblock footer_scripts %}

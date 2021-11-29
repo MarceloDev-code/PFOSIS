@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'calendario',
     'consumidor_de_scrap',
-    'fontawesome',
     'fondos',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,17 +107,17 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-ES'
+LANGUAGE_CODE = 'es-MX'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
-
+DATE_FORMAT = "d/m/Y"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 

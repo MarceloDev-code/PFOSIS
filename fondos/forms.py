@@ -6,6 +6,8 @@ from crispy_forms.bootstrap import InlineCheckboxes
 
 
 class publicacionForm(forms.ModelForm):
+
+
     class Meta:
         model = publicaciones
         fields = (
@@ -19,10 +21,11 @@ class publicacionForm(forms.ModelForm):
 
         )
         widgets = {
-            'fecha_inicio': forms.DateInput(format="%d/%m/%Y %H:%M",
-                                            attrs={'class': 'form-control dtpicker', 'required': 'true'}),
-            'fecha_termino': forms.DateInput(format="%d/%m/%Y %H:%M",
-                                             attrs={'class': 'form-control dtpicker', 'required': 'true'})
+            'dimension': forms.Select(),
+            'fecha_inicio': forms.DateTimeInput(format="%d/%m/%Y %H:%M",
+                                            attrs={'type': 'date', 'class': 'form-control dtpicker', 'required': 'true'}),
+            'fecha_termino': forms.DateTimeInput(format="%d/%m/%Y %H:%M",
+                                             attrs={'type': 'date','class': 'form-control dtpicker', 'required': 'true'})
         }
 
         def __init__(self, *args, **kwargs):

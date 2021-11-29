@@ -1,14 +1,15 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.utils import timezone, dateformat
+from django.utils import timezone
 import calendar,cmath
+from django.contrib.auth.models import AbstractBaseUser
 
 
 # Create your models here.
 
 
 
-class usuario(models.Model):
+class usuario(AbstractBaseUser):
     rut = models.CharField(max_length=20,unique=True,null=False,verbose_name="Documento Chileno de identificación")
     nombres = models.CharField(max_length=100,verbose_name="Nombres")
     rol = models.ForeignKey('rol',verbose_name="Rol",on_delete=models.PROTECT)
@@ -59,12 +60,10 @@ class publicaciones(models.Model):
             self.fecha_termino
         )
     def cambio_de_estado(self):
-        state = self.activo
-        if timezone.now() > self.fecha_termino:
-            state = False
-        return state
+        if self.fecha_termino:
+            self.activo = False
     def dias_que_faltan(self):
-        dias =self.fecha_termino - timezone.now()
+        dias = self.fecha_termino - timezone.now()
         if self.fecha_termino < timezone.now():
             dias = "Ya expiro el fondo"
         return dias
