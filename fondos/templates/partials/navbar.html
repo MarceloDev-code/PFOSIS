@@ -1,31 +1,32 @@
 {% load static %}
 <!-- Fixed navbar -->
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-transparent">
 
-
-    <a class="navbar-brand " href="{% url 'fondos:index' %}" > <img  width="90" height="75" src="{%  static 'assets/favicon.png' %}" >QUELTEHUE TU CANAL SOCIAL </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item ">
-                <a class="nav-link" href="{% url 'fondos:index' %}">
-                    </i>  Fondos</a>
-            </li>
+<div>
+    <a class="navbar-brand " href="{% url 'fondos:tipo' %}" > <img width="90" height="75" src="{%  static 'assets/favicon.png' %}" > </a>
 
 
 
-        </ul>
-        <ul class="navbar-nav pull-right mr-lg-5">
+</div>
+<div>
+<div class="callout">
+
+  <div class="callout-container">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+    <p>Clickea en el Queltehue para volver al inicio</p>
+  </div>
+</div>
+</div>
+    <div style="padding-left: 150px;">
+
+
             {% if request.user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
+                <ul class="nav-item dropdown text-white align-content-end">
+                    <a class="nav-link dropdown-toggle text-white"
                        data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user"></i> {{ request.user }}
+                        <i class="fa fa-user text-white"></i> {{ request.user }}
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/admin/">
@@ -34,18 +35,55 @@
                         </a>
                          <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'fondos:crear' %}">
-                            <i class="fa fa-xing"></i>
-                           Crear nueva fecha
+                            <i class="fa fa-angellist"></i>
+                           Crear nuevo fondo
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'fondos:index' %}">
+                        <a class="dropdown-item" href="{% url 'logout' %}">
                             <i class="fa fa-sign-out"></i>
                             Cerrar Sesión
                         </a>
-                    </div>
-                </li>
+                         </div>
+                </ul>
+                {% else %}
+                  <ul >
+                <div class="dropdown-menu"></div>
+                <a class="dropdown-item" href="{% url 'login' %}">
+                    <i class="fa fa-sign-in"></i>
+                    Iniciar Sesión
+                </a>
+
+                </ul>
+
             {% endif %}
         </ul>
     </div>
 
 </nav>
+
+<script>
+    $(document).ready(function(){
+        var scroll_pos = 0;
+        $(document).scroll(function() {
+            scroll_pos = $(this).scrollTop();
+            if(scroll_pos > 210) {
+                $('.text-white').css('color', '#fff');
+            } else {
+                $('').css('color', '#000');
+            }
+        });
+    })
+    </script>
+
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>

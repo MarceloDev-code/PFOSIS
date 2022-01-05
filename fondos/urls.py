@@ -4,7 +4,8 @@ from  fondos.views import *
 app_name = 'fondos'
 urlpatterns = [
 
-    path('',publicacion_view.as_view(),name='index'),
+    path('fondo/<int:pk>',publicacion_view.as_view(),name='index'),
     path('crear_publicacion', publicacion_create.as_view(), name='crear'),
+    path('', tipo_view.as_view(), name='tipo')
 
 ]

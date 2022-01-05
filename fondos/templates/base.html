@@ -1,9 +1,11 @@
 
 {% load static %}
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="en">
 <head>
  <link rel="shortcut icon" href="{%  static 'assets/favicon.png' %}">
+ <link rel="" href="{%  static 'assets/favicon.png' %}">
  <!-- Bootstrap core CSS -->
     <link href="{% static 'directorio/css/bootstrap.min.css' %}" rel="stylesheet">
 <link
@@ -14,15 +16,7 @@
     <!-- Custom styles for this template -->
      <link href="{% static 'directorio/css/base.css' %}" rel="stylesheet">
 
-<header class="py-5 bg-light border-bottom mb-4">
-            <div class="container">
-                <div class="text-center my-5">
 
-                    <h1 class="fw-bolder">Queltehue Tu canal social!</h1>
-                    <p class="lead mb-0">Bienvenido a la pagina de información para fondos solidarios</p>
-                </div>
-            </div>
-        </header>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -31,11 +25,28 @@
 
 
     <title> {% block titulo_pagina %}{% endblock %} </title>
-
+ <div class="arrow">
+<button type="button" style="scroll-behavior: auto;position: fixed;" class="btn-success fixed-bottom "  id="btn-back-to-top">
+  <i class="fa fa-arrow-up  "></i>
+</button>
+</div>
 
 </head>
 
 <body>
+<div style="background-image: linear-gradient( 109.6deg,  rgba(61,245,167,1) 11.2%, rgba(9,111,224,1) 91.1% );" class="header py-5 bg-light rounded ">
+            <div class="container">
+                <div class="text-center my-5">
+
+                    <h1 class="fw-bolder text-white">
+                        <i class="fa fa-calendar-o"></i>
+                        ¡Queltehue Tu canal social!
+                    </h1>
+                    <p class="lead mb-0 text-white">Bienvenido a tu pagina de información para fondos concursables</p>
+                </div>
+            </div>
+
+        </div>
 
 {% include 'partials/navbar.html' %}
 
@@ -44,6 +55,7 @@
     {% block contenido %}
     {% endblock %}
     <br>
+
 </div>
 
 {% include 'partials/footer.html' %}
@@ -57,18 +69,14 @@
 <script src="{% static 'directorio/js/alertify.min.js' %}"></script>
 
 {% block extra_js %}
+ <script>
+ var element = document.getElementById("btn-back-to-top");
+element.onclick = function(event) {
+     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+ </script>
 {% endblock %}
 
-<script>
-    $( document ).ready(function() {
-        {% if messages %}
-            {% for m in messages %}
-                alertify.notify(
-                    '{{ m.message|safe }}', '{{ m.tags }}', 7
-                );
-            {% endfor %}
-        {% endif %}
-    });
-</script>
 </body>
 </html>

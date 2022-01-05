@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+<H1 style="padding-bottom: 50px;text-align: center;" class="card-title " >
+
+    Selecciona la categoría que quieres buscar</H1>
+
+
+
+
+<div class="row ">
+{% for i in object_list %}
+
+<div style="padding-bottom: 10px" class="col-sm-6 col-xl-4 ">
+<a href="{% url 'fondos:index' i.pk %}">
+		<div style="background-image: linear-gradient( 109.6deg,  rgba(61,245,167,1) 11.2%, rgba(9,111,224,1) 91.1%); " class="card border-info">
+			<div class="card-body d-flex justify-content-between align-items-start pb-3 ">
+
+						 <b class="text-white align-text-right">{{i.nombre}}</b>
+                <br>
+            </div>
+        </div>
+    </a>
+</div>
+
+{% endfor %}
+</div>
+{% endblock %}
+

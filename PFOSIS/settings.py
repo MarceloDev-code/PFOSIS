@@ -103,7 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -117,7 +118,10 @@ USE_L10N = False
 
 USE_TZ = True
 
-DATE_FORMAT = "d/m/Y"
+DATE_FORMAT = "dd/mm/YY"
+DATETIME_FORMAT = "D d/M/Y"
+
+TIME_FORMAT = "HH/mm"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 

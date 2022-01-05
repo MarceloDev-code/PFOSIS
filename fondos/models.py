@@ -60,17 +60,23 @@ class publicaciones(models.Model):
             self.fecha_termino
         )
     def cambio_de_estado(self):
-        if self.fecha_termino:
-            self.activo = False
+        if self.fecha_termino < timezone.now():
+            print("Termino")
+
+
     def dias_que_faltan(self):
-        dias = self.fecha_termino - timezone.now()
+        dias = "Quedan {} días para que expire el fondo".format(str(self.fecha_termino.day - timezone.now().day))
         if self.fecha_termino < timezone.now():
             dias = "Ya expiro el fondo"
+        if self.fecha_inicio > timezone.now():
+            dias = "Aun no empiezan las postulaciones"
         return dias
     def porcentajes(self):
         p = round(((  timezone.now() - self.fecha_inicio) / (self.fecha_termino - self.fecha_inicio))*100 )
         if p > 100:
             p = 100
+        elif p < 0:
+            p = 0
         return p
 
 

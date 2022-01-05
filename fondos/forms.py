@@ -13,13 +13,13 @@ class publicacionForm(forms.ModelForm):
         fields = (
             'nombre_fondo',
             'dimension',
-            'autor',
             'objetivo',
             'enlace',
             'fecha_inicio',
             'fecha_termino',
 
         )
+
         widgets = {
             'dimension': forms.Select(),
             'fecha_inicio': forms.DateTimeInput(format="%d/%m/%Y %H:%M",
