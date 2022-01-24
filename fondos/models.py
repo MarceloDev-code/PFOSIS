@@ -44,6 +44,7 @@ class dimensiones(models.Model):
 class publicaciones(models.Model):
     nombre_fondo = models.CharField(max_length=200,null=False,verbose_name="Nombre del Fondo")
     dimension = models.ForeignKey('dimensiones',verbose_name="Dimensión",on_delete=models.PROTECT)
+    descripcion = models.CharField(max_length=1000,null=True,verbose_name='descripcion')
     autor = models.ForeignKey('auth.User',verbose_name="Autor",on_delete=models.PROTECT)
     objetivo = models.CharField(max_length=300,null=True,verbose_name="Objetivo")
     enlace = models.CharField(max_length=200,verbose_name="Link")

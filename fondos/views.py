@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from fondos.forms import *
 from django.utils import timezone
-from django.views.generic import TemplateView, ListView,CreateView
+from django.views.generic import TemplateView, ListView,CreateView, DetailView
 from fondos.models import *
 from django.urls import reverse,reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
@@ -19,6 +19,16 @@ class publicacion_view(ListView):
         ctx =super().get_context_data(*args,**kwargs)
         slug= self.kwargs['pk']
         ctx['publicaciones2'] = publicaciones.objects.filter(dimension=slug)
+        return ctx
+
+class publicacion_object(DetailView):
+    model = publicaciones
+    object_name = "publicacion"
+    template_name = 'publicaciones/ver_publicacion.html'
+    def get_context_data(self, *args, **kwargs):
+        ctx = super().get_context_data(*args, **kwargs)
+        slug = self.kwargs['pk']
+        ctx['actividades2'] = publicaciones.objects.filter(pk=slug)
         return ctx
 
 class publicacion_create(CreateView):
@@ -39,10 +49,6 @@ class tipo_view(ListView):
     template_name = 'home.html'
     queryset = dimensiones.objects.all()
 
-def lista_publicaciones(request,pk,*args,**kwargs):
-    ctx = {}
-    ctx['publicaciones1'] = publicaciones.objects.filter(dimension_id=pk).order_by('fecha_inicio')
 
-    return render(request, 'index.html',ctx)
 
 

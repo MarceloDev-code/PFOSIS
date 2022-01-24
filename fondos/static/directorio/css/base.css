@@ -8,7 +8,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   margin-top: 20px;
-  background-color: #FFFFFF;
+  background-color: #d8d8d8;
 }
 
 .footer {
@@ -69,4 +69,16 @@ code {
 /* Change color on mouse-over */
 .closebtn:hover {
   color: lightgrey;
+}
+
+.multicolortext {
+        background-image: linear-gradient(to left, #F285A2, #3F0A73, #0B078C, #03A66A, #03A66A, #F29F05, black);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+.conchetumare {
+  background-color: #1d2124;
 }
