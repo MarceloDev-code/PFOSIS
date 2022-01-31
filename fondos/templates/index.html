@@ -7,22 +7,7 @@
 
     Encuentra los fondos concursables disponibles para tu region</H1>
 
-<div class="card-body border-info">
-    <div class="card-title rounded border-info">
 
-       <form method="post">
-           {% csrf_token %}
-           <label for="filtro" >Ingrese los terminos que desea buscar</label>
-           <textarea id="filtro" name="filtro" rows="1" cols="100"></textarea>
-           <br><br>
-
-            <input class="ml-auto" type="submit" value="Filtrar">
-                <i class="fa fa-search">
-               </i>
-       </form>
-        {% csrf_token %}
-    </div>
- </div>
 <div class="row">
 
 	{% for i in publicaciones2 %}
