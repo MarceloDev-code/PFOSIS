@@ -13,6 +13,7 @@ class publicacionForm(forms.ModelForm):
         fields = (
             'nombre_fondo',
             'dimension',
+            'descripción',
             'objetivo',
             'enlace',
             'fecha_inicio',
